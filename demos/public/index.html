@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but
+      <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to
+      continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+  (function () {
+    if (window.zhuge) return;
+    window.zhuge = [];
+    window.zhuge.methods = "_init identify track trackRevenue getDid getSid getKey setSuperProperty setUserProperties setWxProperties setPlatform".split(" ");
+    window.zhuge.factory = function (b) {
+      return function () {
+        var a = Array.prototype.slice.call(arguments);
+        a.unshift(b);
+        window.zhuge.push(a);
+        return window.zhuge;
+      }
+    };
+    for (var i = 0; i < window.zhuge.methods.length; i++) {
+      var key = window.zhuge.methods[i];
+      window.zhuge[key] = window.zhuge.factory(key);
+    }
+    window.zhuge.load = function (b, x) {
+      if (!document.getElementById("zhuge-js")) {
+        var a = document.createElement("script");
+        var verDate = new Date();
+        var verStr = verDate.getFullYear().toString() + verDate.getMonth().toString() + verDate.getDate().toString();
+
+        a.type = "text/javascript";
+        a.id = "zhuge-js";
+        a.async = !0;
+        a.src = 'https://zgsdk.zhugeio.com/zhuge.min.js?v=' + verStr;
+        a.onerror = function () {
+          window.zhuge.identify = window.zhuge.track = function (ename, props, callback) {
+            if (callback && Object.prototype.toString.call(callback) === '[object Function]') {
+              callback();
+            } else if (Object.prototype.toString.call(props) === '[object Function]') {
+              props();
+            }
+          };
+        };
+        var c = document.getElementsByTagName("script")[0];
+        c.parentNode.insertBefore(a, c);
+        window.zhuge._init(b, x)
+      }
+    };
+    window.zhuge.load('9f74d8fc3eba48328d8b20defe3930c2', { //配置应用的AppKey
+      superProperty: { //全局的事件属性(选填)
+        '应用名称': '诸葛io'
+      },
+      adTrack: false,//广告监测开关，默认为false
+      zgsee: false,//视屏采集开关， 默认为false
+      autoTrack: false,
+      visualizer: true,  //可视化埋点开关
+      //启用全埋点采集（选填，默认false）
+      singlePage: false //是否是单页面应用（SPA），启用autoTrack后生效（选填，默认false）
+    });
+  })();
+</script>
