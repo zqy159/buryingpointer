@@ -1,20 +1,22 @@
 {
-	"name": "demos",
-	"version": "1.0.0",
-	"description": "",
-	"main": "main.js",
-	"scripts": {
-		"dev": "vue-cli-service serve",
-		"build": "vue-cli-service build"
-	},
-	"dependencies": {
-		"vue": "^2.6.11"
-	},
-	"devDependencies": {
-		"@vue/cli-service": "^4.2.0",
-		"vue-template-compiler": "^2.6.11"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC"
+  "name": "demos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "css-selector": "^v0.1.0",
+    "element-ui": "^2.13.2",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^4.2.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
