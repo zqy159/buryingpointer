@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  var a = {
+    b: {
+      s: 1
+    }
+  };
+  bValue = 1;
+  Object.defineProperty(a, "b.s", {
+    set: function (value) {
+      bValue = value;
+      console.log("setted");
+    },
+    get: function () {
+      return bValue;
+    }
+  });
+  a.b.s = 1
+  // a.b;//1
+  // a.b = [];//setted
+  // a.b = [1, 2, 3];//setted
+  // a.b[1] = 10;//无输出
+  // a.b.push(4);//无输出
+  // a.b.length = 5;//无输出
+  // a.b;//[1,10,3,4,undefined];
+
+</script>

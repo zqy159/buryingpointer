@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+  // let obj = {
+  //   msg: {
+  //     a: 10,
+  //     m: {
+  //       x: 1
+  //     }
+  //   },
+  //   arr: [1, 2, 3]
+  // }
+
+  // let handler = {
+  //   get(target, key) {
+  //     console.log('get', target, key);
+  //     //懒监听，去获取的时候才监听对象里面的对象，而不是直接递归循环监听
+  //     if (typeof target[key] === 'object' && target[key] !== null) {
+  //       if (this.key) {
+  //         this.key += '.' + key
+  //       } else {
+  //         this.key = key
+  //       }
+
+  //       return new Proxy(target[key], handler);
+  //     }
+  //     return Reflect.get(target, key);
+  //   },
+  //   set(target, key, value) {
+  //     console.log('set', target, key, value, this.key);
+  //     this.key = ''
+  //     //数组新增会执行两次，一次是修改length，一次是添加值
+  //     let oldValue = target[key];
+  //     if (!oldValue) {
+  //       //找不到老值，新增
+  //     } else if (oldValue !== value) {
+  //       console.log('xxx')
+  //       //老值和新值不相等，修改
+  //     }
+  //     return Reflect.set(target, key, value);
+  //   }
+  // }
+
+  // let proxy = new Proxy(obj, handler)
+  // proxy.arr.push(4);
+  // proxy.msg.m.x = 50;
+  // proxy.msg.b = 60;
+  // proxy.c = 70;
+  // console.log(proxy)
+
+  const obj = {
+    a: {
+      b: {
+        c: {
+          d: {
+            e: 5
+          }
+        }
+      }
+    }
+  }
+  function getValue(obj, keys) {
+    var arr = keys.split('.')
+    arr.forEach(item => { obj = obj[item] })
+    return obj
+  }
+  // let obj = {}
+  function setValue(key) {
+    var test = "a.b.c.d";
+    var ret = {};
+    var arr = test.split(".");
+    do {
+      var key = arr.pop();
+      var obj = {};
+      obj[key] = ret;
+      ret = obj;
+    } while (arr.length);
+    console.log(ret);
+  }
+
+  // setValue('a.b.c.d')
+  // console.log(eval("obj.a.b.c.d={}"))
+  let str = 'a.b.c.d.e'
+  val =
+    str.filter(item => {
+      return
+    })
+  getValue(obj, 'a.b.c.d')[a.pop()] = 5
+  console.log(obj)
+
+
+</script>

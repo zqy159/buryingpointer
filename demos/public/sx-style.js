@@ -205,12 +205,45 @@ let styleNode = `
       width: 100%;
       height: 100%;
     }
- 
+    .sx-form-emitType{
+      height:38px;
+      line-height:38px;
+    }
+    .sx-form-quit{
+      border: 1px solid #C9C9C9;
+      background-color: #fff;
+      color: #555;
+    }
+     .sx-form-quit:hover{
+      border-color: #009688;
+      color: #333;
+    }
+    .sx-message{
+      position:fixed;
+      left: calc(50% - 190px);
+      top: 20px;
+      box-sizing: border-box;
+      border-width: 1px;
+      border-style: solid;
+      min-width: 380px;
+      background-color: #f0f9eb;
+      border-color: #e1f3d8;
+      color:#67C23A;  
+      padding: 15px 15px 15px 20px;
+    }
     [data-hoverable] {
       outline: 2px solid #7ed321 !important;
       outline-offset: -2px !important;
       cursor:pointer;
     }
+    [data-selectable] {
+      // background: rgba(0, 160, 234, 0.1) !important;
+      outline: 2px solid #7ed321 !important;
+      outline-offset: -2px !important;
+      border: 2px solid #00a0ea !important;
+      box-shadow: 0 0 6px 0 #00A0EA !important;
+    }
+    
  `
 // 引入style
 var sxStyle = document.createElement("style");

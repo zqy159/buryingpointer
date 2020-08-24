@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="box" style="height:280px">
+    <p>12321321</p>
+  </div>
+  <div id="boxShadow" style="background:palegreen;opacity:0.5;position:absolute;pointer-events: none;"></div>
+</body>
+
+</html>
+
+<script>
+  function getOffset(o) {
+    var top = 0;
+    var left = 0;
+    var offsetParent = o;
+    while (offsetParent != null && offsetParent != document.body) {
+      top += offsetParent.offsetTop;
+      left += offsetParent.offsetLeft;
+      offsetParent = offsetParent.offsetParent;
+    }
+    return { left, top };
+  }
+  let boxShadow = document.getElementById("boxShadow");
+  document.body.onmouseover = e => {
+    boxShadow.style.height = e.target.offsetHeight + "px";
+    boxShadow.style.width = e.target.offsetWidth + "px";
+    boxShadow.style.top = getOffset(e.target).top + "px";
+    boxShadow.style.left = getOffset(e.target).left + "px";
+    // boxShadow.setAttribute("data-el", this.getEl(e.target));
+    console.log(e.target)
+  }
+
+
+
+
+</script>

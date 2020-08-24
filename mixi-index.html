@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="mixi-ui.css">
+  <link rel="stylesheet" href="font/iconfont.css">
+  <title>mixi-ui</title>
+</head>
+
+<body>
+  <p>
+    按钮
+  </p>
+  <button type="button" class="mixi-btn">默认按钮</button>
+  <button type="button" class="mixi-btn mixi-btn-primary">普通按钮</button>
+  <button type="button" class="mixi-btn mixi-btn-normal">浅绿按钮</button>
+  <button type="button" class="mixi-btn mixi-btn-success">成功按钮</button>
+  <button type="button" class="mixi-btn mixi-btn-warm">警告按钮</button>
+  <button type="button" class="mixi-btn mixi-btn-danger">危险按钮</button>
+  <button type="button" class="mixi-btn mixi-btn-disabled">禁用按钮</button>
+  <p>
+    弹框
+  </p>
+  <button type="button" class="mixi-btn" id="handleDialog">默认按钮</button>
+
+  <!-- <div class="mixi-dialog">
+    <div class="mixi-dialog-header">
+      <div class="mixi-dialog-title">
+        标题
+      </div>
+      <div class="mixi-dialog-close">
+        x
+      </div>
+    </div>
+    <div class="mixi-dialog-content">
+      <p>内容</p>
+    </div>
+    <div class="mixi-dialog-footer">
+      <button type="button" class="mixi-btn mixi-cancel mixi-btn-primary">取消</button>
+      <button type="button" class="mixi-btn mixi-confirm">确定</button>
+    </div>
+  </div> -->
+
+  <!-- 蒙版 -->
+  <!-- <div class="mixi-dialog-mask"></div> -->
+
+  <p>
+    表单
+  </p>
+  <form action="" class="mixi-form" id="handleForm">
+    <div class="mixi-form-item">
+      <label class="mixi-form-label">输入框</label>
+      <div class="mixi-input-block">
+        <input type="text" name="input1" placeholder="请输入..." class="mixi-input">
+      </div>
+    </div>
+
+    <div class="mixi-form-item">
+      <label class="mixi-form-label" label-require>校验框</label>
+      <div class="mixi-input-block">
+        <input type="text" name="input2" placeholder="请输入..." class="mixi-input" mixi-require="true">
+      </div>
+    </div>
+
+    <div class="mixi-form-item">
+      <label class="mixi-form-label" label-require>选择框</label>
+      <div class="mixi-input-block">
+        <select name="select" class="mixi-select" mixi-require="true">
+          <option value="">请选择...</option>
+          <option value="0">北京</option>
+          <option value="1">上海</option>
+          <option value="2">广州</option>
+          <option value="3">深圳</option>
+          <option value="4">杭州</option>
+        </select>
+      </div>
+    </div>
+    <div class="mixi-form-item">
+      <label class="mixi-form-label">开关</label>
+      <div class="mixi-input-block">
+        <input type="text" name="switch" class="mixi-switch" value="1">
+
+      </div>
+    </div>
+    <button type="button" class="mixi-btn" id="handleSubmit">提交</button>
+
+  </form>
+
+  <p>
+    消息弹窗
+  </p>
+  <button type="button" class="mixi-btn mixi-btn-success" id="handleSuccess">成功</button>
+  <button type="button" class="mixi-btn mixi-btn-danger" id="handleError">失败</button>
+  <button type="button" class="mixi-btn mixi-btn-warm" id="handlewraning">警告</button>
+  <!-- <div class="mixi-message mixi-message--success">
+    <i class="mixi-icon-chenggong mixi-message-icon"></i>
+    <span class="mixi-message-content">恭喜你，这是一条成功消息</span>
+    <i class="mixi-icon-guanbi mixi-message-close"></i>
+  </div> -->
+  <p>
+    页顶滑块
+  </p>
+  <div class="mixi-topslider"></div>
+  <button type="button" class="mixi-btn mixi-btn-success" id="handleSlider">打开页顶滑块</button>
+
+
+</body>
+
+</html>
+<script type="text/javascript" src="mixi-ui.js"></script>
+<script>
+  // 初始化
+  mixiJs.init()
+
+  document.getElementById('handleDialog').onclick = e => {
+    mixiJs.dialog.open({
+      title: "弹框",
+      content: "<div>111</div>",
+      cancel: "取消",
+      confirmCallback() {
+        console.log('xssx')
+      }
+    })
+  }
+
+  document.getElementById('handleSubmit').onclick = e => {
+    mixiJs.form.validate({
+      el: document.getElementById('handleForm'),
+      success(data) {
+        console.log(data)
+      },
+      error(data) {
+        console.log(data)
+      }
+    })
+  }
+
+  document.getElementById('handleSuccess').onclick = e => {
+    mixiJs.message.open({
+      // duration: 1000,
+      message: '恭喜你，这是一条成功消息',
+    })
+  }
+  document.getElementById('handleError').onclick = e => {
+    mixiJs.message.open({
+      duration: 1000,
+      type: "error",
+      message: '错了哦，这是一条错误消息',
+    })
+  }
+  document.getElementById('handlewraning').onclick = e => {
+    mixiJs.message.open({
+      duration: 1000,
+      type: "warning",
+      message: '警告哦，这是一条警告消息',
+    })
+  }
+  document.getElementById('handleSlider').onclick = e => {
+    console.log('xxx')
+  }
+</script>
